@@ -1,11 +1,11 @@
 <template>
-        <div class="searchContainer">
-            <!--<div style="background: #f0a">
-                {{queryParam}}
-            </div>-->
+    <div class="searchContainer">
+        <!--<div style="background: #f0a">
+            {{queryParam}}
+        </div>-->
 
-            <!--{{dataQuery}}-->
-            <div class="elementsContainer">
+        <!--{{dataQuery}}-->
+        <div class="elementsContainer">
               <span class="queryElement" :class="{hidden:queryItem.type=='hidden',switchElementContainer:queryItem.switchElements,tabContainer:queryItem.type=='tab',datetimerange:queryItem.type=='datetimerange',tipHtml:queryItem.type=='tipHtml'}" v-for="queryItem in queryElements" :key="queryItem.prop+'_query'+queryItem.label">
                     <span class="form-group form-inline " v-if="queryItem.type=='input'"  style="margin-top:10px;padding-right: 10px;">
                         <span class="queryItemLabel" v-if="queryItem.label">{{queryItem.label}}</span>
@@ -31,8 +31,8 @@
                         <span class="queryItemLabel" v-if="queryItem.label">{{queryItem.label}}</span>
                         <span  v-for="component in queryItem.components" :key="component.prop+'_query'+queryItem.label">
                             <input type="text" class="form-control width170" v-model="queryParam[component.prop]" :placeholder="component.placeholder"
-                                    :id="component.id" :maxelementid="component.maxelementid" :minelementid="component.minelementid"
-                                   >
+                                   :id="component.id" :maxelementid="component.maxelementid" :minelementid="component.minelementid"
+                            >
                                     <span v-if="$index==0">{{queryItem.link}}</span>
                          </span>
                     </span>
@@ -68,8 +68,8 @@
                                         <span class="queryItemLabel" v-if="queryItemInner.label">{{queryItemInner.label}}</span>
                                         <span  v-for="component in queryItemInner.components" :key="component.prop+'_query__'+component.label">
                                                 <input type="text" class="form-control width170" v-model="queryParam[component.prop]" :placeholder="component.placeholder"  @change="changeQueryParam(queryItemInner)"
-                                                        :id="component.id" :maxelementid="component.maxelementid" :minelementid="component.minelementid"
-                                                         >
+                                                       :id="component.id" :maxelementid="component.maxelementid" :minelementid="component.minelementid"
+                                                >
                                                         <span v-if="$index==0">{{queryItem.link}}</span>
                                             </span>
                                     </span>
@@ -111,16 +111,16 @@
                             <div v-for="tip in queryItem.items" v-html="tip"></div>
                     </span>
               </span>
-            </div>
-            <div class="btnContainer">
+        </div>
+        <div class="btnContainer">
               <span v-for="queryItem in queryButtons" :key="queryItem.prop+'_query'+queryItem.label"   @click="queryBtnClick(queryParam,queryItem)">
                   <span v-if="queryItem.type!='search'" :class="['btn','btn-default','el-button el-button--default',queryItem.type=='search'?'el-button el-button--info':'',queryItem.btnClass]">
                         {{queryItem.label}}
                   </span>
                   <el-button v-else="queryItem.type!='search'" type="primary" icon="search">搜索</el-button>
               </span>
-            </div>
         </div>
+    </div>
 </template>
 
 <script>
@@ -382,9 +382,9 @@
                 }
                 /*n 级 级联查询结束*/
                 this.queryButtons=this.queryElements.filter(item=>{return item.type=='button'||item.type=='search'});
-               /* setTimeout(data=>{
-                    this.syncParam();
-                },500)*/
+                /* setTimeout(data=>{
+                     this.syncParam();
+                 },500)*/
             },
             syncParam(){
                 this.$parent.$emit(this.$attrs.queryConfig.listenerId,this.queryParam)
@@ -573,13 +573,13 @@
         align-items: flex-start;
     }
     .tabContainer ul{
-         width: 100%;
-         display: flex;
-         flex-direction: row;
-         justify-content: flex-start;
-         align-items: flex-start;
-         transform: translateY(11px);
-     }
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        transform: translateY(11px);
+    }
     .tabContainer ul li{
         display: inline-block;
         padding: 0px;
@@ -587,12 +587,12 @@
         border-radius: 0px;
     }
     .tabContainer ul li label{
-         display: inline-block;
-         padding: 10px 35px;
-         border-radius: 0px;
-         margin-bottom: 0px;
+        display: inline-block;
+        padding: 10px 35px;
+        border-radius: 0px;
+        margin-bottom: 0px;
         border-left: none;
-     }
+    }
     .tabContainer ul li:nth-child(1) label{
         display: inline-block;
         padding: 10px 35px;

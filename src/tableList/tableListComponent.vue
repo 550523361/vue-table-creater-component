@@ -18,47 +18,47 @@
             </el-table-column>
             <el-table-column v-for="column in tableListConfig.colums"
                              :key="column.prop"
-                    :width="column.width?(column.width=='auto'?'':column.width):80"
-                    :prop="column.prop"
-                    v-if="column.viewHandler?column.viewHandler(column,$parent.queryParam,$parent.readonly):true"
-                    :label="column.label">
-                    <template slot-scope="scope">
-                                <span    v-if="column.type==null||column.type==''" @click="column['click']&&column['click'](scope.row)">{{column["columnHandler"]?column.columnHandler(scope.row[column.prop]):scope.row[column.prop]}}</span>
-                                <input   v-if="column.type=='input'"        @keyup.enter="column['enter']&&column['enter']($event,scope.row,column)" @blur="column['blur']&&column['blur']($event,scope.row,column)" style="line-height: 30px;width: 100%;" v-model="scope.row[column.prop]"  @change="column['change']&&column['change']($event,scope.row,column)" />
-                                <input   v-if="column.type=='checkbox'"     @click="column['click']&&column['click']($event,scope.row)"   @change="column['change']&&column['change']($event,scope.row)" v-model="scope.row.checked"  type="checkbox"/>
-                                <a        v-if="column.type=='href'"           :href="scope.row[column.prop]" target="_blank" style="cursor: pointer;color: blue;" title="点击看看">{{scope.row[column.prop]}}</a>
-                                <input   v-if="column.type=='sortOrder'"     type="number"  v-model="scope.row[column.prop]" @change="column['change']&&column['change']($event,scope.row)"  style="max-width: 40px;" alt=""/>
-                                <label   v-if="column.type=='diy'"            @click="column['click']&&column['click']($event,scope.row)">{{column.diy&&column.diy(scope.row)}}</label>
-                                <span    v-if="column.type=='image'||column.type=='img'" >
+                             :width="column.width?(column.width=='auto'?'':column.width):80"
+                             :prop="column.prop"
+                             v-if="column.viewHandler?column.viewHandler(column,$parent.queryParam,$parent.readonly):true"
+                             :label="column.label">
+                <template slot-scope="scope">
+                    <span    v-if="column.type==null||column.type==''" @click="column['click']&&column['click'](scope.row)">{{column["columnHandler"]?column.columnHandler(scope.row[column.prop]):scope.row[column.prop]}}</span>
+                    <input   v-if="column.type=='input'"        @keyup.enter="column['enter']&&column['enter']($event,scope.row,column)" @blur="column['blur']&&column['blur']($event,scope.row,column)" style="line-height: 30px;width: 100%;" v-model="scope.row[column.prop]"  @change="column['change']&&column['change']($event,scope.row,column)" />
+                    <input   v-if="column.type=='checkbox'"     @click="column['click']&&column['click']($event,scope.row)"   @change="column['change']&&column['change']($event,scope.row)" v-model="scope.row.checked"  type="checkbox"/>
+                    <a        v-if="column.type=='href'"           :href="scope.row[column.prop]" target="_blank" style="cursor: pointer;color: blue;" title="点击看看">{{scope.row[column.prop]}}</a>
+                    <input   v-if="column.type=='sortOrder'"     type="number"  v-model="scope.row[column.prop]" @change="column['change']&&column['change']($event,scope.row)"  style="max-width: 40px;" alt=""/>
+                    <label   v-if="column.type=='diy'"            @click="column['click']&&column['click']($event,scope.row)">{{column.diy&&column.diy(scope.row)}}</label>
+                    <span    v-if="column.type=='image'||column.type=='img'" >
                                     <img           v-for="img in (scope.row[column.prop]+''||'').split(',')" :src="img" v-if="img" style="max-width: 80px;vertical-align: middle;margin: 5px;" alt=""/>
                                 </span>
-                    </template>
+                </template>
             </el-table-column>
             <el-table-column fixed="right" :width="tableListConfig.operator.width?(tableListConfig.operator.width=='auto'?'':tableListConfig.operator.width):80"  v-if="tableListConfig.operator.column&&tableListConfig.operator.column.length>0" label="操作" :render-header="tableListConfig.operator.renderHeader">
-                   <template slot-scope="scope">
-                       <div class="operateBtnContainer">
-                           <label
-                                   :for="'checkbox_'+scope.row.id+operate.prop"
-                                   :style="scope.row[operate.prop+'Check']?operate.checkedStyle:operate.style"
-                                   v-if="operate.map&&operate.map[scope.row[operate.prop]]||operate.map==null"
-                                   v-for="(operate,operatIndex) in tableListConfig.operator.column"
-                                   :key="operate.prop+'_'+operate.label+operatIndex+'_'+'_labelKey_'+(scope.row.id||scope.row.code)"
-                                   :class="[{'operateBtn':true}]"
-                                    @click="operate.type!='checkbox'?operateClick(scope.row,operate):''">
-                                    <input type="checkbox" v-if="operate.type=='checkbox'" style="display: none;" :id="'checkbox_'+scope.row.id+operate.prop" v-model="scope.row[operate.prop+'Check']" @click="operate.type=='checkbox'?operateClick(scope.row,operate):''"/>
-                                        {{(!scope.row[operate.prop+'Check'])?operate.label:(operate.cancleLabel||'取消')}}{{operate.map&&operate.map[scope.row[operate.prop]]}}
-                           </label>
-                       </div>
-                   </template>
+                <template slot-scope="scope">
+                    <div class="operateBtnContainer">
+                        <label
+                                :for="'checkbox_'+scope.row.id+operate.prop"
+                                :style="scope.row[operate.prop+'Check']?operate.checkedStyle:operate.style"
+                                v-if="operate.map&&operate.map[scope.row[operate.prop]]||operate.map==null"
+                                v-for="(operate,operatIndex) in tableListConfig.operator.column"
+                                :key="operate.prop+'_'+operate.label+operatIndex+'_'+'_labelKey_'+(scope.row.id||scope.row.code)"
+                                :class="[{'operateBtn':true}]"
+                                @click="operate.type!='checkbox'?operateClick(scope.row,operate):''">
+                            <input type="checkbox" v-if="operate.type=='checkbox'" style="display: none;" :id="'checkbox_'+scope.row.id+operate.prop" v-model="scope.row[operate.prop+'Check']" @click="operate.type=='checkbox'?operateClick(scope.row,operate):''"/>
+                            {{(!scope.row[operate.prop+'Check'])?operate.label:(operate.cancleLabel||'取消')}}{{operate.map&&operate.map[scope.row[operate.prop]]}}
+                        </label>
+                    </div>
+                </template>
             </el-table-column>
         </el-table>
         <div class="block">
             <el-pagination v-if="tableDataSource.total"
-                    layout="prev, pager, next"
-                    :total="tableDataSource.total"
-                    :page-size="tableDataSource.size"
-                    :current-page="tableDataSource.number"
-                    @current-change="queryListByPager">
+                           layout="prev, pager, next"
+                           :total="tableDataSource.total"
+                           :page-size="tableDataSource.size"
+                           :current-page="tableDataSource.number"
+                           @current-change="queryListByPager">
             </el-pagination>
         </div>
     </div>
@@ -194,13 +194,13 @@
                 console.log("headerClick",column,param);
                 //column.label=column.label=='取消'?'全选':'取消';
                 column.checkedStyle={
-                        width:'100%',
-                        display:'inline-block',
-                        height:'100%',
-                        textAlign:'center',
-                        backgroundColor:'rgba('+Math.ceil(Math.random()*255)+','+Math.ceil(Math.random()*255)+','+Math.ceil(Math.random()*255)+',1)',
-                        color:'#fff'
-                    };
+                    width:'100%',
+                    display:'inline-block',
+                    height:'100%',
+                    textAlign:'center',
+                    backgroundColor:'rgba('+Math.ceil(Math.random()*255)+','+Math.ceil(Math.random()*255)+','+Math.ceil(Math.random()*255)+',1)',
+                    color:'#fff'
+                };
                 if(this.tableListConfig.headerClick&&typeof this.tableListConfig.headerClick == "function"){
                     this.tableListConfig.headerClick(column,param,this.tableDataSource)
                 }
@@ -213,7 +213,7 @@
                         backgroundColor:'#f00',
                         width:'100%',
                         display:'inline-block',
-                         height:'100%',
+                        height:'100%',
                         textAlign:'center',
                         color:'#fff'
                     },
@@ -228,15 +228,15 @@
                         backgroundColor:'#f00',
                         //width:'100%',
                         display:'inline-block',
-                       // height:'100%',
+                        // height:'100%',
                         textAlign:'center',
                         color:'#fff'
                     },
                     attrs:{
-                            type:'checkbox',
-                            checked:true
-                        }
-                    },params.column.label)
+                        type:'checkbox',
+                        checked:true
+                    }
+                },params.column.label)
             },
             tableRowClassName({row, rowIndex}){
                 //console.log("row, rowIndex",row, rowIndex)
