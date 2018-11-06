@@ -1,0 +1,47 @@
+#container {
+    height: 300px;
+    width:800px;
+}
+
+.queryElement{
+    display: block;
+    width: 100%;
+    border:0px solid #f00;
+}
+
+.tableClass{
+    width: 1060px;
+    display: inline-block;
+}
+.readonlyContainer input[disabled='disabled'][type='text'] {
+    background-color: #eef1f6!important;
+    border-color: #d1dbe5!important;
+    color: #bbb;
+    cursor: not-allowed;
+    border: 0px solid #f00!important;
+    background: #fff!important;
+}
+.tipMessage{
+    display: inline-block;font-size: 12px;padding-left: 15px;color:#50bfff;
+}
+
+.formTip{
+    color: #f00;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.composite{
+    display: inline-block;
+    width: 100%;
+}
+.composite .el-form-item{
+    position: relative;
+    display: inline-block;
+}
+.composite .el-form-item:nth-child(2) .el-form-item__content{
+    margin-left: 0px!important;
+}
+.composite .el-input, .composite .el-input__inner{
+    width: auto!important;
+}
