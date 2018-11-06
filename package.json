@@ -1,14 +1,14 @@
 {
-  "name": "vue-form-creater-component",
-  "version": "1.0.7",
-  "description": "vue-form-creater-component",
+  "name": "vue-table-creater-component",
+  "version": "1.0.8",
+  "description": "vue-table-creater-component",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": false,
   "keywords": [
-    "vue-form-creater"
+    "vue-table-creater"
   ],
   "author": "fengxiankun",
   "license": "ISC",
@@ -16,8 +16,7 @@
     "axios": "^0.18.0",
     "element-ui": "^2.4.9",
     "underscore": "^1.9.1",
-    "vue": "^2.5.17",
-    "vue-table-creater-component": "^1.0.2"
+    "vue": "^2.5.17"
   },
-  "repository": "https://github.com/550523361/vue-form-creater-component.git"
+  "repository": "https://github.com/550523361/vue-table-creater-component.git"
 }
