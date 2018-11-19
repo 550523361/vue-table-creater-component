@@ -8,7 +8,7 @@ export default {
                         attrs:{
                             readData:this.readData,
                             config:{
-                                formData:[1,2,3,4],
+                                formData:[],
                                 dataBus:this.$attrs.elementInfo.dataBus
                             },
                             elementInfo:this.$attrs.elementInfo

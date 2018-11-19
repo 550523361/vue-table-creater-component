@@ -23,7 +23,12 @@
                              v-if="column.viewHandler?column.viewHandler(column,$parent.queryParam,$parent.readonly):true"
                              :label="column.label">
                 <template slot-scope="scope">
-                    <span    v-if="column.type==null||column.type==''" @click="column['click']&&column['click'](scope.row)">{{column["columnHandler"]?column.columnHandler(scope.row[column.prop]):scope.row[column.prop]}}</span>
+                                <span    v-if="column.type==null||column.type==''" @click="column['click']&&column['click'](scope.row)">
+                                    <span v-if="column.html" v-html="column.columnHandler(scope.row[column.prop],scope.row)"></span>
+                                    <span v-else="column.html">
+                                        {{column["columnHandler"]?column.columnHandler(scope.row[column.prop],scope.row):scope.row[column.prop]}}
+                                    </span>
+                                </span>
                     <input   v-if="column.type=='input'"        @keyup.enter="column['enter']&&column['enter']($event,scope.row,column)" @blur="column['blur']&&column['blur']($event,scope.row,column)" style="line-height: 30px;width: 100%;" v-model="scope.row[column.prop]"  @change="column['change']&&column['change']($event,scope.row,column)" />
                     <input   v-if="column.type=='checkbox'"     @click="column['click']&&column['click']($event,scope.row)"   @change="column['change']&&column['change']($event,scope.row)" v-model="scope.row.checked"  type="checkbox"/>
                     <a        v-if="column.type=='href'"           :href="scope.row[column.prop]" target="_blank" style="cursor: pointer;color: blue;" title="点击看看">{{scope.row[column.prop]}}</a>
@@ -76,7 +81,7 @@
                 rowData:{},
                 queryParam:{pageNum:1,pageSize:15},
                 operator:{},
-                tableListConfig:{colums:["id","name"],watchProp:''},
+                tableListConfig:{colums:[],watchProp:''},
                 hasCheckBox:[],
                 tableDataSource:{
                     dataList:[]
@@ -147,6 +152,8 @@
                             that.afterRequest(result.data)
                             that.tableDataSource=result.data;
                         }
+                    }else{
+                        that.tableDataSource=[];
                     }
                 })
             },
@@ -250,10 +257,6 @@
             headerRowClassName({row, rowIndex}){
                     return "defaultHeader";
             }
-        },
-        mounted:function () {
-            let that=this;
-
         },
         created:function () {
             let that=this;
