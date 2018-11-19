@@ -73,7 +73,8 @@ var config={
         marginRight:'5px',
         fontSize:'13px'
     },
-    headerClick:null,//table header点击回调函数
+    headerClick:null,//table header点击回调函数,
+    selection:false,//是否在每行第一列显示复选按钮 表头将会生成一个批量选择按钮
 }
 
     /*一个配置实例*/
