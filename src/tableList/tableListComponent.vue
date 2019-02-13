@@ -89,7 +89,7 @@
 </template>
 
 <script>
-    import backendService from '../../service/remoteService/backendService'
+    import backendService from '../remoteService/backendService'
 
     export default {
         name: "mytable",
