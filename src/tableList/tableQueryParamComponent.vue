@@ -147,13 +147,11 @@
 </template>
 
 <script>
-    tableListConfig=require("./TabListConfig");
     import backendService from '../remoteService/backendService'
 
     export default {
         name: "mytablequery",
         props:{
-            //tableListConfig
         },
         data:function(){
             return {
