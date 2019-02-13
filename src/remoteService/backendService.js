@@ -76,7 +76,7 @@ function getData(config) {
     config = Object.assign(config,{
         //baseURL:'http://101.200.80.219:8012'
         //baseURL:'http://10.200.0.52:8200'
-        baseURL:'/api-backend'
+        //baseURL:'/api-backend'
     });
     //config=Object.create(config,defaultConfig);
     /*if(config.url.indexOf("?")>=0){

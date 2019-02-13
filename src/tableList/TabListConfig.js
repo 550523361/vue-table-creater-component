@@ -55,6 +55,7 @@ var config={
     ],//列表的查询条件,包含隐藏字段
     httpMethod:'post',//接口http方法
     pagerDataHelper:null,//接口数据处理函数 返回数组供列表组件展示数据
+    errorDataHelper:null,
     listAdapter:{},
     pager:{
         pageSizeProp:"rowsPerPage",//分页大小的属性
@@ -74,7 +75,8 @@ var config={
         fontSize:'13px'
     },
     headerClick:null,//table header点击回调函数,
-    selection:false,//是否在每行第一列显示复选按钮 表头将会生成一个批量选择按钮
+    selection:false,//是否在每行第一列显示复选按钮 表头将会生成一个批量选择按钮,
+    splitTables:1
 }
 
     /*一个配置实例*/

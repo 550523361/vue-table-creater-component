@@ -1,6 +1,6 @@
 {
   "name": "vue-table-creater-component",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "vue-table-creater-component",
   "main": "src/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "element-ui": "^1.4.13",
+    "element-ui": "^2.5.4",
     "underscore": "^1.9.1",
     "vue": "^2.5.17"
   },
