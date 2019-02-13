@@ -3,7 +3,7 @@ import TableListConfig from "./tableList/TabListConfig"
 import BaseService from "./remoteService/backendService"
 import AnyComponent from "./tableList/componentContainer"
 import elementUi from "element-ui"
-import "element-ui/lib/theme-default/index.css"
+import "element-ui/lib/theme-chalk/index.css"
 const components=[TableList,AnyComponent];
 
 const install = function(Vue,options){
