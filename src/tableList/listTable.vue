@@ -1,7 +1,10 @@
 <template>
   <div class="list">
+    <slot name="beforeQuery"></slot>
     <query-param :queryConfig="queryConfig" :readData="readonly" :clickConfig="clickConfig" ref="queryParam"></query-param>
+    <slot name="beforeTable"></slot>
     <my-table :tableListConfig="tableListConfig" :readData="readonly" ref="tableList"></my-table>
+    <slot name="afterTable"></slot>
   </div>
 </template>
 <script>
