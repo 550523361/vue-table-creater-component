@@ -66,7 +66,7 @@
                                         :key="operate.prop+'_'+operate.label+operatIndex+'_'+'_labelKey_'+(scope.row.id||scope.row.code)"
                                         :class="[{'operateBtn':true}]"
                                         @click="operate.type!='checkbox'?operateClick(scope.row,operate):''">
-                                    <input type="checkbox" v-if="operate.type=='checkbox'" style="display: none;" :id="'checkbox_'+scope.row.id+operate.prop" v-model="scope.row[operate.prop+'Check']" @click="operate.type=='checkbox'?operateClick(scope.row,operate):''"/>
+                                    <input type="checkbox" v-if="operate.type=='checkbox'" style="display: none;" :id="'checkbox_'+scope.row.id+operate.prop" v-model="scope.row['idCheck']" @change="operate.type=='checkbox'?operateClick(scope.row,operate):''"/>
                                     <span v-if="!operate.viewHandler">{{(!scope.row[operate.prop+'Check'])?operate.label:(operate.cancleLabel||'取消')}}{{operate.map&&operate.map[scope.row[operate.prop]]}}</span>
                                     <span v-if="operate.viewHandler">{{operate.viewHandler(operate,scope.row,$parent.queryParam,$parent.readonly)}}</span>
                                 </label>
