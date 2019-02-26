@@ -1,6 +1,6 @@
 {
   "name": "vue-table-creater-component",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "vue-table-creater-component",
   "main": "src/index.js",
   "scripts": {

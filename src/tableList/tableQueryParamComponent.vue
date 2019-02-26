@@ -134,7 +134,7 @@
                                 <ul class="mytableTest" style="display: inline-block;border-bottom:1px solid #333">
                                     <li v-for="(component,labelIndex) in !(tabItem.dataUrl&&tabItem.initQuery)?tabItem.components:dataQuery.query[tabItem.propList]" :key="component.code+component.prop+component.id+'__query'+component.label">
                                         <input type="radio" :name="component.prop" :id="component.prop+'_'+labelIndex" :value="component.value||component.code"
-                                               @click="queryBtnClick(queryParam,tabItem,component)"
+                                               @change="queryBtnClick(queryParam,tabItem,component)"
                                                v-model="queryParam[tabItem.prop]">
                                         <label :for="component.prop+'_'+labelIndex" class="btn">{{component.label||component.desc||component.name}}</label>
                                     </li>
